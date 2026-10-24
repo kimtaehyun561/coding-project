@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f3ff">
+  <title>나의 목표와 자기소개</title>
+  <style>
+    :root {
+      --bg: #f5f6fb;
+      --card: #ffffff;
+      --text: #20243a;
+      --muted: #68708a;
+      --accent: #6657d9;
+      --accent-dark: #4f42b8;
+      --border: #e5e7f0;
+      --shadow: 0 14px 38px rgba(36, 39, 75, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px 16px 56px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(173, 160, 255, .19), transparent 28rem),
+        radial-gradient(circle at 100% 15%, rgba(143, 220, 255, .18), transparent 26rem),
+        var(--bg);
+      line-height: 1.5;
+    }
+
+    .page {
+      width: min(100%, 960px);
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin: 0 auto 26px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 5px 11px;
+      border: 1px solid #e5e1ff;
+      border-radius: 999px;
+      color: var(--accent-dark);
+      background: #f0edff;
+      font-size: .82rem;
+      font-weight: 750;
+      letter-spacing: .02em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -.045em;
+    }
+
+    .subtitle {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .countdown {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 28px 0 20px;
+      padding: 22px 26px;
+      border-radius: 22px;
+      color: white;
+      background: linear-gradient(125deg, #5d50d5, #8b73ec);
+      box-shadow: 0 12px 28px rgba(94, 79, 211, .22);
+    }
+
+    .countdown-label {
+      font-size: .94rem;
+      opacity: .9;
+      font-weight: 650;
+    }
+
+    .countdown-number {
+      margin-top: 3px;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 850;
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+
+    .countdown-number small {
+      margin-left: 5px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .countdown-date {
+      flex-shrink: 0;
+      text-align: right;
+      font-size: .9rem;
+      opacity: .92;
+    }
+
+    .panel {
+      margin-top: 20px;
+      padding: clamp(20px, 4vw, 30px);
+      border: 1px solid rgba(229, 231, 240, .9);
+      border-radius: 24px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      letter-spacing: -.035em;
+    }
+
+    .section-note {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #fff0d7, #ffe0c1);
+      font-size: 2.35rem;
+    }
+
+    .profile h3 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .profile p {
+      margin: 5px 0 0;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: #f1f0ff;
+      color: #5549b6;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .profile-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 17px;
+      padding: 10px 15px;
+      border-radius: 12px;
+      color: white;
+      background: var(--accent);
+      text-decoration: none;
+      font-weight: 750;
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .profile-link:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .goal-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 140px;
+      padding: 14px;
+      border: 1px solid #e5e3fa;
+      border-radius: 16px;
+      background: #f8f7ff;
+      color: #353052;
+      text-align: center;
+      font-size: clamp(.85rem, 2vw, 1rem);
+      font-weight: 650;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+      cursor: text;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .goal-cell:focus {
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(102, 87, 217, .13);
+    }
+
+    .goal-cell.center {
+      color: white;
+      border-color: transparent;
+      background: linear-gradient(145deg, #5d50d5, #8b73ec);
+      box-shadow: 0 7px 16px rgba(94, 79, 211, .2);
+      font-size: clamp(.95rem, 2.3vw, 1.12rem);
+      font-weight: 850;
+    }
+
+    .goal-cell.center:focus {
+      background: linear-gradient(145deg, #5145c2, #7962dd);
+      box-shadow: 0 0 0 3px rgba(102, 87, 217, .22);
+    }
+
+    .board-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .button {
+      appearance: none;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 9px 13px;
+      color: var(--text);
+      background: #fff;
+      font: inherit;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .button:hover { background: #f7f7fc; }
+
+    .button.primary {
+      border-color: var(--accent);
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .button.primary:hover { background: var(--accent-dark); }
+
+    .save-status {
+      align-self: center;
+      margin-left: auto;
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    footer {
+      padding: 22px 8px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .82rem;
+    }
+
+    @media (max-width: 560px) {
+      body { padding: 22px 12px 36px; }
+      .countdown { padding: 19px; border-radius: 18px; }
+      .countdown-date { max-width: 112px; font-size: .8rem; }
+      .panel { padding: 18px 14px; border-radius: 19px; }
+      .profile { align-items: flex-start; gap: 13px; }
+      .avatar { width: 60px; height: 60px; flex-basis: 60px; border-radius: 17px; font-size: 1.9rem; }
+      .goal-grid { gap: 6px; }
+      .goal-cell { min-height: 112px; padding: 7px 5px; border-radius: 11px; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .save-status { width: 100%; margin-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <span class="eyebrow">MY GOAL DASHBOARD</span>
+      <h1>나의 목표</h1>
+      <p class="subtitle">작은 실천을 모아 큰 목표에 가까워지기</p>
+    </header>
+
+    <section class="countdown" aria-label="수능 디데이">
+      <div>
+        <div class="countdown-label">수능까지</div>
+        <div class="countdown-number" id="dday-number">계산 중…</div>
+      </div>
+      <div class="countdown-date">목표 날짜<br><strong>2027년 11월 18일</strong></div>
+    </section>
+
+    <section class="panel" aria-labelledby="profile-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="profile-title">나를 소개합니다</h2>
+          <p class="section-note">나의 관심사와 좋아하는 것들</p>
+        </div>
+      </div>
+      <div class="profile">
+        <div class="avatar" aria-hidden="true">🔥</div>
+        <div>
+          <h3>김태현</h3>
+          <p>물리랑 코딩을 좋아하는 고등학교 1학년입니다.</p>
+          <div class="tags" aria-label="관심사">
+            <span class="tag">축구</span>
+            <span class="tag">음악</span>
+            <span class="tag">물리학</span>
+          </div>
+          <a class="profile-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">내 깃허브 ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="mandalart-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="mandalart-title">만다라트 목표판</h2>
+          <p class="section-note">칸을 눌러서 고칠 수 있어요. 수정 내용은 이 브라우저에 자동 저장됩니다.</p>
+        </div>
+      </div>
+
+      <div class="goal-grid" id="goal-grid" aria-label="3 곱하기 3 목표판">
+        <div class="goal-cell" contenteditable="true" role="textbox" aria-label="첫 번째 목표" spellcheck="false">매일 영어 단어 100개 외우기</div>
+        <div class="goal-cell" contenteditable="true" role="textbox" aria-label="두 번째 목표" spellcheck="false">수학 오답노트</div>
+        <div class="goal-cell" contenteditable="true" role="textbox" aria-label="세 번째 목표" spellcheck="false">주 4회 운동</div>
+        <div class="goal-cell" contenteditable="true" role="textbox" aria-label="네 번째 목표" spellcheck="false">독서 월 2권</div>
+        <div class="goal-cell center" contenteditable="true" role="textbox" aria-label="중심 목표" spellcheck="false">물리학과 진학</div>
+        <div class="goal-cell" contenteditable="true" role="textbox" aria-label="여섯 번째 목표" spellcheck="false">과학 자유 주제 발표</div>
+        <div class="goal-cell" contenteditable="true" role="textbox" aria-label="일곱 번째 목표" spellcheck="false">8시간 수면</div>
+        <div class="goal-cell" contenteditable="true" role="textbox" aria-label="여덟 번째 목표" spellcheck="false">물리학 심화 주제 탐구</div>
+        <div class="goal-cell" contenteditable="true" role="textbox" aria-label="아홉 번째 목표" spellcheck="false">코딩 포트폴리오</div>
+      </div>
+
+      <div class="board-actions">
+        <button class="button primary" type="button" id="save-button">지금 저장</button>
+        <button class="button" type="button" id="reset-button">처음 목표로 되돌리기</button>
+        <span class="save-status" id="save-status" role="status" aria-live="polite">자동 저장 준비 완료</span>
+      </div>
+    </section>
+
+    <footer>오늘의 작은 실천이 내일의 큰 목표가 됩니다 ✨</footer>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var goalGrid = document.getElementById("goal-grid");
+      var cells = Array.prototype.slice.call(goalGrid.querySelectorAll(".goal-cell"));
+      var saveStatus = document.getElementById("save-status");
+      var saveButton = document.getElementById("save-button");
+      var resetButton = document.getElementById("reset-button");
+      var storageKey = "myMandalartGoals";
+      var defaultGoals = [
+        "매일 영어 단어 100개 외우기",
+        "수학 오답노트",
+        "주 4회 운동",
+        "독서 월 2권",
+        "물리학과 진학",
+        "과학 자유 주제 발표",
+        "8시간 수면",
+        "물리학 심화 주제 탐구",
+        "코딩 포트폴리오"
+      ];
+
+      function setStatus(message) {
+        saveStatus.textContent = message;
+      }
+
+      function getGoals() {
+        return cells.map(function (cell) {
+          return cell.innerText.replace(/\r/g, "").trim();
+        });
+      }
+
+      function saveGoals() {
+        try {
+          if (!window.localStorage) {
+            setStatus("이 브라우저에서는 저장 기능을 사용할 수 없어요.");
+            return;
+          }
+          window.localStorage.setItem(storageKey, JSON.stringify(getGoals()));
+          setStatus("저장됨 ✓");
+        } catch (error) {
+          setStatus("저장할 수 없어요. 브라우저 설정을 확인해 주세요.");
+        }
+      }
+
+      function loadGoals() {
+        try {
+          var saved = window.localStorage.getItem(storageKey);
+          if (!saved) return;
+          var goals = JSON.parse(saved);
+          if (!Array.isArray(goals) || goals.length !== cells.length) return;
+          cells.forEach(function (cell, index) {
+            if (typeof goals[index] === "string") {
+              cell.textContent = goals[index];
+            }
+          });
+          setStatus("저장된 목표를 불러왔어요 ✓");
+        } catch (error) {
+          setStatus("저장된 목표를 불러오지 못했어요.");
+        }
+      }
+
+      function resetGoals() {
+        var confirmed = window.confirm("목표판을 처음 내용으로 되돌릴까요? 현재 수정 내용은 사라집니다.");
+        if (!confirmed) return;
+        cells.forEach(function (cell, index) {
+          cell.textContent = defaultGoals[index];
+        });
+        saveGoals();
+        setStatus("처음 목표로 되돌렸어요 ✓");
+      }
+
+      function updateDday() {
+        var target = new Date(2027, 10, 18);
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+        var days = Math.round((target.getTime() - today.getTime()) / 86400000);
+        var output = document.getElementById("dday-number");
+
+        if (days > 0) {
+          output.innerHTML = "D-" + days;
+        } else if (days === 0) {
+          output.textContent = "D-Day!";
+        } else {
+          output.innerHTML = "D+" + Math.abs(days);
+        }
+      }
+
+      cells.forEach(function (cell) {
+        cell.addEventListener("input", saveGoals);
+        cell.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            cell.blur();
+          }
+        });
+      });
+
+      saveButton.addEventListener("click", saveGoals);
+      resetButton.addEventListener("click", resetGoals);
+
+      loadGoals();
+      updateDday();
+    }());
+  </script>
+</body>
+</html>
